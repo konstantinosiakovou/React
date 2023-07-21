@@ -1,32 +1,52 @@
 import './App.css'; 
 import './styles.css';
 import React from "react";
-import { Link, Route, Routes } from "react-router-dom";
-import Booking from "./Pages/booking";
 
-// function header(){
-//   return <h1>Hello World</h1>
-// }
+import { Link, Route, Routes, BrowserRouter } from "react-router-dom";
+import Home from './App';
+import Booking from './Pages/Booking.js';
+import Menu from './Pages/Menu.js';
+import Reservations from './Pages/Reservations.js';
+import OrderOnline from './Pages/OrderOnline.js';
+import Online from './Pages/Online.js';
+import SignUp from './Pages/SignUp.js';
 
 
-function App() {
+
+
+
+ function App() {
+  const [number, setNumber] = React.useState(1);
+  function increment() {
+    setNumber((prevNumber) => prevNumber + 1);
+  }
   return (
     <div className="App">
       <header><div class="logo"><img src="Logo .svg" alt="Little Lemon Logo" /></div>
       <nav>
         <ul>
-            {/* <li><Link to="/">HomePage</Link></li> */}
-            <li><Link to="/booking">Booking</Link></li>
-            {/* <li><Link to="menu.html">Menu</Link></li> 
-            <li><a href="menu.html">Reservations</a></li>
-            <li><a href="book.html">Order Online</a></li>
-            <li><a href="menu.html">Online</a></li>  */} 
+            <li><Link to="/">Home</Link></li> 
+            <li><Link to="/Booking">Booking</Link></li>
+            <li><Link to="/Menu">Menu</Link></li> 
+            <li><Link to="/Reservations">Reservations</Link></li>
+            <li><Link to="/Booking">Order Online</Link></li>
+            <li><Link to="/Online">Online</Link></li> 
+            <li><Link to="/SignUp">SignUp</Link></li>
         </ul>
     </nav>
+     
+    <BrowserRouter>
     <Routes>
-      {/* <Route path="/Booking" element={<Booking />} /> */}
-      <Route path="/booking" element={<Booking />} /> 
+      <Route exact path="/" element={<Home/>} />
+      <Route path="Booking" element={<Booking/>} />
+      <Route path="menu" element={<Menu />} /> 
+      <Route path="Reservations" element={<Reservations />} /> 
+      <Route path="OrderOnline" element={<OrderOnline />} /> 
+      <Route path="Online" element={<Online />} />
+      <Route path="SignUp" element={<SignUp />} />
     </Routes>
+    </BrowserRouter>
+  
     </header>
     <main>
         <section>
@@ -142,6 +162,7 @@ function App() {
                         <div class="col-lg-3 item social"><a href="/#"><i class="icon ion-social-facebook"></i></a><a href="/#"><i class="icon ion-social-twitter"></i></a><a href="/#"><i class="icon ion-social-snapchat"></i></a><a href="/#"><i class="icon ion-social-instagram"></i></a>
                         <p class="copyright">Little Lemon © 2023</p>
                     </div>
+                   
                     </div>
                 </div>
             </div>
@@ -150,7 +171,9 @@ function App() {
     </div>
   );
 
-//   return <header/>
-}
+
+
+ }
+
 
 export default App;
