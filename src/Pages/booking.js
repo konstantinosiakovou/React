@@ -6,7 +6,7 @@ import React, {useState} from "react";
 function Booking() {
 
 const [field, setField] = useState("");
-const [times, setTimes] = useState(() => initializeTimes());
+
 const reducer =(state, setTime) =>{
   if (setTime.type ==='res-date') return {availableTimes: state.availableTimes + 1};
   if (setTime.type ==='res-date') return {availableTimes: state.availableTimes + 1};
@@ -22,7 +22,8 @@ const reducer =(state, setTime) =>{
     setField(event.target.value);
   };
 
-  const [availableTimes] = useState([
+
+  const [availableTimes, setAvailableTimes] = useState([
     "9:00 AM",
     "10:00 AM",
     "11:00 AM",
@@ -33,6 +34,39 @@ const reducer =(state, setTime) =>{
     "4:00 PM",
     "5:00 PM",
   ]);
+
+  const initializeTimes = () => {
+    const [initializeTimes, setInitializeTimes] = useState([
+      "9:00 AM",
+      "10:00 AM",
+      "11:00 AM",
+      "12:00 PM",
+      "1:00 PM",
+      "2:00 PM",
+      "3:00 PM",
+      "4:00 PM",
+      "5:00 PM",
+    ]);
+    
+    return initializeTimes;
+  };
+
+  const updateTimes = () => {
+    const [updateTimes, setUpdateTimes] = useState([
+      "9:00 AM",
+      "10:00 AM",
+      "11:00 AM",
+      "12:00 PM",
+      "1:00 PM",
+      "2:00 PM",
+      "3:00 PM",
+      "4:00 PM",
+      "5:00 PM",
+    ]);
+    
+    return updateTimes;
+  };
+
 
   return (
     <div className='App'> 
