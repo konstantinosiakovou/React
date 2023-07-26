@@ -1,6 +1,7 @@
 import './App.css'; 
 import './styles.css';
-import React from "react";
+import React from 'react';
+import ReactDOM from 'react-dom';
 
 import { Link, Route, Routes, BrowserRouter } from "react-router-dom";
 import Home from './App';
@@ -10,18 +11,18 @@ import Reservations from './Pages/Reservations.js';
 import OrderOnline from './Pages/OrderOnline.js';
 import Online from './Pages/Online.js';
 import SignUp from './Pages/SignUp.js';
-
+import ConfirmedBooking from './Pages/Booking.js';
 
 
 
 
  function App() {
-  const [number, setNumber] = React.useState(1);
-  function increment() {
-    setNumber((prevNumber) => prevNumber + 1);
-  }
+//   const [number, setNumber] = React.useState(1);
+//   function increment() {
+//     setNumber((prevNumber) => prevNumber + 1);
+//   }
   return (
-    <div className="App">
+    <div className="Booking">
       <header><div class="logo"><img src="Logo .svg" alt="Little Lemon Logo" /></div>
       <nav>
         <ul>
@@ -34,7 +35,7 @@ import SignUp from './Pages/SignUp.js';
             <li><Link to="/SignUp">SignUp</Link></li>
         </ul>
     </nav>
-     
+
     <BrowserRouter>
     <Routes>
       <Route exact path="/" element={<Home/>} />
@@ -46,7 +47,7 @@ import SignUp from './Pages/SignUp.js';
       <Route path="SignUp" element={<SignUp />} />
     </Routes>
     </BrowserRouter>
-  
+
     </header>
     <main>
         <section>
@@ -162,7 +163,7 @@ import SignUp from './Pages/SignUp.js';
                         <div class="col-lg-3 item social"><a href="/#"><i class="icon ion-social-facebook"></i></a><a href="/#"><i class="icon ion-social-twitter"></i></a><a href="/#"><i class="icon ion-social-snapchat"></i></a><a href="/#"><i class="icon ion-social-instagram"></i></a>
                         <p class="copyright">Little Lemon © 2023</p>
                     </div>
-                   
+
                     </div>
                 </div>
             </div>
@@ -170,10 +171,77 @@ import SignUp from './Pages/SignUp.js';
     </div>
     </div>
   );
-
-
-
  }
 
 
-export default App;
+export default Booking;
+
+
+
+//  const fetchData = () => {
+// fetch("https://raw.githubusercontent.com/Meta-Front-End-Developer-PC/capstone/master/api.js")
+// .then(Response => Response.json())
+// .then(data => setUser(data));
+// }
+// React.useEffect(() => {
+//     fetchData();
+// }, []);
+
+// return Object.keys(user).length >0 ? (
+//     <div>
+//         <h1>Data returned</h1>
+//         <h2>First Name:{user.results[0].name.first}</h2>
+//         <h2>Last Name: {user.results[0].name}</h2>
+//     </div>
+// ) : (
+//     <h1>Data pending...</h1>
+
+// )
+
+function FetchAPI(date) {
+    const [time, setDate] = React.useState([]);
+    const fetchData = () => {
+    fetch("https://raw.githubusercontent.com/Meta-Front-End-Developer-PC/capstone/master/api.js")
+    .then(Response => Response.json())
+    .then(time => setDate(time));
+    }
+    React.useEffect(() => {
+        fetchData();
+    }, []);
+
+    const availableTimes = date.map(reservation => reservation.time);
+    return availableTimes;
+
+  
+}
+
+function submitAPI(formData) {
+    // Assuming there is an API endpoint to submit the form data
+    const apiUrl = 'localhost:8000/Booking.js';
+
+    // Assuming we are using fetch API for making the API request
+    return fetch(apiUrl, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(formData),
+    })
+      .then((response) => {
+
+        if (response.ok) {
+          return true;
+        } else {
+
+          return false;
+        }
+      })
+      .catch((error) => {
+
+        console.error('Error submitting form data:', error);
+        return false;
+      });
+  }
+
+
+ReactDOM.render(<App />, document.getElementById('root'));
