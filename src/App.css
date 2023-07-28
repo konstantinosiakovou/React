@@ -72,13 +72,14 @@ Link:link {
 }
 
 .subsection {
-  margin-top: -2rem;
+  margin-top: -1rem;
 }
 
 /* NAVBAR STYLING */
 .navbar-menu {
   grid-template-columns: repeat(7, 1fr);
   align-items: center;
+  gap: 16px;
 }
 
 .navbar-menu > li,
@@ -114,15 +115,16 @@ Link:link {
   background-color: #495e57;
   color: white;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  padding: 1.25rem 5rem 1.2rem 5rem;
-  margin-top: -1.4rem;
+  grid-template-columns: 4fr 1fr;
+  padding: 1.25rem 5rem 1.2rem 15rem;
+  margin-top: 1rem;
+  margin-bottom: 90px;
 }
 
 .hero-text > h1 {
   font-size: 3rem;
   margin-top: 0rem;
-  margin-bottom: -3rem;
+  margin-bottom: 1rem;
 }
 
 .hero-text > h2 {
@@ -257,7 +259,7 @@ Link:link {
   display: grid;
   grid-template-columns: 1fr 1fr;
   padding: 1.25rem 5rem 2.5rem 5rem;
-  min-height: 22rem;
+  min-height: 26rem;
   margin-bottom: -1rem;
   grid-gap: 25vw;
 }
@@ -305,7 +307,7 @@ footer > menu {
 }
 
 .footer-header {
-  margin-bottom: -1.25rem;
+  margin-bottom: 1rem;
 }
 
 .footer-links {
